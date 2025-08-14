@@ -1,12 +1,13 @@
 {
-  "name": "bot-osint",
+  "name": "telegraf-termux-bot",
   "version": "1.0.0",
-  "description": "Bot Telegram OSINT Tools by azamtukam",
+  "description": "Telegraf multi-tool OSINT by azamtukam",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
     "start": "node index.js"
   },
   "dependencies": {
-    "telegraf": "^4.15.3"
+    "telegraf": "^4.16.3"
   }
 }
