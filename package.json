@@ -1,0 +1,12 @@
+{
+  "name": "bot-osint",
+  "version": "1.0.0",
+  "description": "Bot Telegram OSINT Tools by azamtukam",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "telegraf": "^4.15.3"
+  }
+}
