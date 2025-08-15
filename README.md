@@ -1,5 +1,6 @@
 # tools-telegram-v1
 
+bash````
 $ pkg update && pkg upgrade
 $ pkg install git
 $ pkg install nodejs
