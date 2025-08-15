@@ -97,12 +97,6 @@ bot.command('webinfo', async (ctx) => {
   ctx.reply(cut(msg), { parse_mode: 'Markdown' });
 });
 
-// ==== My Info ====
-bot.command('myinfo', async (ctx) => {
-  const r = await sh(`curl -s ifconfig.me/all || curl -s https://ifconfig.me/all`);
-  ctx.reply(cut('🧑‍💻 *My Info*\n\n' + (r.out || r.err || 'gagal')), { parse_mode: 'Markdown' });
-});
-
 // ==== Site Up/Down ====
 bot.command('up', async (ctx) => {
   const url = sanitizeURL(ctx.message.text.split(' ').slice(1).join(' '));
