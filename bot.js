@@ -1,4 +1,4 @@
-8const { Telegraf } = require('telegraf');
+const { Telegraf } = require('telegraf');
 const { exec } = require('child_process');
 
 const BOT_TOKEN = process.env.BOT_TOKEN;
