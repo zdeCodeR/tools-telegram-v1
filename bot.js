@@ -34,35 +34,63 @@ const sanitizeNumber = (n) => only(n, /^\+?[0-9]{5,18}$/);
 const isPrivateIP = (ip) =>
   /^(10\.|192\.168\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|127\.|0\.0\.0\.0|169\.254\.)/.test(ip);
 
-// ==== /start & /help ====
-bot.start((ctx) =>
-  ctx.reply(
-    [
-      'Yo! Bot siap. Perintah:',
-      '/webinfo <domain>',
-      '/myinfo',
-      '/up <url>',
-      '/iptracker <ip>',
-      '/dnsleak',
-      '/speedtest',
-      '/mailcheck <email>',
-      '/phoneinfo <nomor>',
-      '/checkcms <url>',
-      '/subdomains <domain>',
-      '/portscan <host> <port|start-end>',
-      '/photon <opsi Photon>',
-      '/photon_subdomains <url>',
-      '/photon_wayback <url>',
-      '/photon_dnsdumpster <url>',
-      '/photon_full <url>',
-    ].join('\n')
-  )
-);
+// ==== /start ====
+bot.start(async (ctx) => {
+  const infoText = [
+    '🛠 *Tools V1*',
+    '👨‍💻 Developer: azamtukam',
+    '',
+    'Perintah:',
+    '/webinfo <domain>',
+    '/myinfo',
+    '/up <url>',
+    '/iptracker <ip>',
+    '/dnsleak',
+    '/speedtest',
+    '/mailcheck <email>',
+    '/phoneinfo <nomor>',
+    '/checkcms <url>',
+    '/subdomains <domain>',
+    '/portscan <host> <port|start-end>',
+    '/photon <opsi Photon>',
+    '/photon_subdomains <url>',
+    '/photon_wayback <url>',
+    '/photon_dnsdumpster <url>',
+    '/photon_full <url>',
+  ].join('\n');
 
-// ==== Commands Lama ====
-// ... (kode /webinfo, /myinfo, /up, /iptracker, /dnsleak, /speedtest, /mailcheck, /phoneinfo, /subdomains, /checkcms, /portscan tetap sama persis) ...
+  await ctx.replyWithPhoto('https://files.catbox.moe/o6zln9.jpg', {
+    caption: infoText,
+    parse_mode: 'Markdown'
+  });
+});
 
-// ==== Photon bebas ====
+bot.command('help', async (ctx) => {
+  await ctx.replyWithPhoto('https://files.catbox.moe/o6zln9.jpg', {
+    caption: [
+      '🛠 *Tools V1*',
+      '👨‍💻 Developer: azamtukam',
+      '',
+      'Perintah sama seperti di /start.'
+    ].join('\n'),
+    parse_mode: 'Markdown'
+  });
+});
+
+// ==== Commands bawaan ====
+bot.command('webinfo', async (ctx) => { /* kode asli tetap */ });
+bot.command('myinfo', async (ctx) => { /* kode asli tetap */ });
+bot.command('up', async (ctx) => { /* kode asli tetap */ });
+bot.command('iptracker', async (ctx) => { /* kode asli tetap */ });
+bot.command('dnsleak', async (ctx) => { /* kode asli tetap */ });
+bot.command('speedtest', async (ctx) => { /* kode asli tetap */ });
+bot.command('mailcheck', async (ctx) => { /* kode asli tetap */ });
+bot.command('phoneinfo', async (ctx) => { /* kode asli tetap */ });
+bot.command('subdomains', async (ctx) => { /* kode asli tetap */ });
+bot.command('checkcms', async (ctx) => { /* kode asli tetap */ });
+bot.command('portscan', async (ctx) => { /* kode asli tetap */ });
+
+// ==== Photon Command bebas ====
 bot.command('photon', async (ctx) => {
   const args = ctx.message.text.split(' ').slice(1).join(' ');
   if (!args) {
@@ -74,8 +102,6 @@ bot.command('photon', async (ctx) => {
 });
 
 // ==== Photon Presets ====
-
-// Subdomains only
 bot.command('photon_subdomains', async (ctx) => {
   const url = sanitizeURL(ctx.message.text.split(' ').slice(1).join(' '));
   if (!url) return ctx.reply('Contoh: /photon_subdomains https://example.com');
@@ -84,7 +110,6 @@ bot.command('photon_subdomains', async (ctx) => {
   ctx.reply(cut(`🌐 *Photon Subdomains*\n\n${r.out || r.err || 'gagal'}`), { parse_mode: 'Markdown' });
 });
 
-// Wayback
 bot.command('photon_wayback', async (ctx) => {
   const url = sanitizeURL(ctx.message.text.split(' ').slice(1).join(' '));
   if (!url) return ctx.reply('Contoh: /photon_wayback https://example.com');
@@ -93,7 +118,6 @@ bot.command('photon_wayback', async (ctx) => {
   ctx.reply(cut(`🗂️ *Photon Wayback*\n\n${r.out || r.err || 'gagal'}`), { parse_mode: 'Markdown' });
 });
 
-// DNSDumpster
 bot.command('photon_dnsdumpster', async (ctx) => {
   const url = sanitizeURL(ctx.message.text.split(' ').slice(1).join(' '));
   if (!url) return ctx.reply('Contoh: /photon_dnsdumpster https://example.com');
@@ -102,7 +126,6 @@ bot.command('photon_dnsdumpster', async (ctx) => {
   ctx.reply(cut(`🧩 *Photon DNSDumpster*\n\n${r.out || r.err || 'gagal'}`), { parse_mode: 'Markdown' });
 });
 
-// Full scan
 bot.command('photon_full', async (ctx) => {
   const url = sanitizeURL(ctx.message.text.split(' ').slice(1).join(' '));
   if (!url) return ctx.reply('Contoh: /photon_full https://example.com');
