@@ -59,7 +59,7 @@ bot.start(async (ctx) => {
     '/photon_full <url>',
   ].join('\n');
 
-  await ctx.replyWithPhoto('https://files.catbox.moe/o6zln9.jpg', {
+  await ctx.replyWithPhoto('https://files.catbox.moe/yzcgma.jpg', {
     caption: infoText,
     parse_mode: 'Markdown'
   });
