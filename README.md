@@ -1,6 +1,10 @@
-# tools-telegram-v1
+i# tools-telegram-v1
+cat > README.md << 'EOF'
+# telegram Bot Base
 
-bash````
+## Cara Install di Termux
+
+```bash
 $ pkg update && pkg upgrade
 $ pkg install git
 $ pkg install nodejs
